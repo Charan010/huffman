@@ -7,20 +7,22 @@ According to information theory, the more uncertain an event is to occur, the mo
 
 So, using this encoding, more frequent characters get shorter binary code so, total number of bits used will reduce drastically for huge files.
 
-## Usage
+## How to install:
 
 ```bash
-mkdir build
-cd huffman/build
-cmake ..
-cmake --build .
-./huffman "text to be passed here"
+cmake -S . -B build
+cmake --build build
+
+cmake --install build
+
 ```
+## Usage:
 
-### TO-DO
+```bash
+huffman -c <absolute-path-to-the-file> (to encode)
+huffman -d <file-to-be-decoded> <file-to-be-dumped> 
 
-- Accept a file path as input instead of a raw string
-- Persist the Huffman code table / tree to disk so the encoded file can be decoded later
+```
 
 
 ## Requirements

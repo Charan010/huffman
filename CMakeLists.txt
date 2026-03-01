@@ -6,4 +6,13 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(huffman main.cpp)
+add_executable(
+    huffman
+    main.cpp
+    huffman.cpp
+    bit_io.cpp
+    helper.cpp
+)
+
+install(TARGETS huffman
+        RUNTIME DESTINATION bin)
