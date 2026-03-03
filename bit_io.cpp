@@ -23,6 +23,9 @@ void BitWriter::write_byte(uint8_t b){
             write_bit((b >> i) & 1);
 }
 
+size_t BitWriter::get_bits_written()const{
+    return bits_written;
+}
 
 void BitWriter::flush(){
     if(bits > 0){
