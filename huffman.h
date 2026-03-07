@@ -23,7 +23,7 @@ struct Compare {
 };
 
 
-Node* build_huffman_tree(const std::unordered_map<char, int>& freq);
+Node* build_huffman_tree(const std::array<uint32_t,256>& freq);
 
 void free_tree(Node *root);
 

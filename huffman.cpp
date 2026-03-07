@@ -1,5 +1,6 @@
 #include "huffman.h"
 #include "bit_io.h"
+#include <array>
 
 
 Node::Node(char c, int f) {
@@ -37,12 +38,15 @@ bool Compare::operator()(Node* a, Node* b) {
     
 */
 
-Node *build_huffman_tree(const std::unordered_map<char, int>&freq){
+Node *build_huffman_tree(const std::array<uint32_t, 256> &freq){
+
 
     std::priority_queue<Node*, std::vector<Node*>, Compare> pq;
 
-    for(auto &[k, v] : freq)
-        pq.push(new Node(k ,v));
+    for(int i = 0; i < 256; i++) {
+        if(freq[i] > 0)
+        pq.push(new Node((char)i, freq[i]));
+}
 
     while(pq.size() > 1){
         Node *a = pq.top();

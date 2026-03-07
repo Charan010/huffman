@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include "huffman.h"
 #include "bit_io.h"
+#include <array>
 #include "helper.h"
 #include <filesystem>
 
@@ -9,8 +10,8 @@ namespace fs = std::filesystem;
 
 int main(int argc, char* argv[]) {
 
-    Node *root;
 
+    Node *root;
 
     if (argc < 3) {
         std::cerr << "Usage:\n" " Encode: ./huffman -c <input_file>\n"
@@ -28,8 +29,9 @@ int main(int argc, char* argv[]) {
 
             std::string text = read_file(input_path.string());
 
-            std::unordered_map<char, int> freq;
-            for (char c : text)
+            std::array<uint32_t, 256> freq = {0};
+
+            for(unsigned char c : text)
                 freq[c]++;
 
             root = build_huffman_tree(freq);
